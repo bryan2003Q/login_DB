@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 
+
 class Interfaz:
     def __init__(self, master):
         self.master = master
@@ -12,7 +13,6 @@ class Interfaz:
         self.contactos = []
 
      
-
         frame = tk.Frame(self.master, bg="#CED8F6")
         frame.pack(side="left", anchor="n", padx=10, pady=200)
 
@@ -23,7 +23,7 @@ class Interfaz:
         self.entry_nombre = tk.Entry(frame, font=("Helvetica", 12))
         self.label_email = tk.Label(frame, text='Email:', bg="#f2f2f2", font=("Helvetica", 12))
         self.entry_email = tk.Entry(frame, font=("Helvetica", 12))
-        self.boton_nuevo_contacto = tk.Button(frame, text='Nuevo contacto', command=self.nuevo_contacto, font=("Helvetica", 12))
+        self.boton_nuevo_contacto = ttk.Button(frame, text='Nuevo contacto', command=self.nuevo_contacto,style="TButton" )
 
       
         self.label_nombre.grid(row=0, column=0, sticky="w", padx=10, pady=(0, 5))
@@ -37,7 +37,7 @@ class Interfaz:
         self.entry_nombre_modificar = tk.Entry(frame, font=("Helvetica", 12))
         self.label_email_modificar = tk.Label(frame, text='Email:', bg="#f2f2f2", font=("Helvetica", 12))
         self.entry_email_modificar = tk.Entry(frame, font=("Helvetica", 12))
-        self.boton_modificar_contacto = tk.Button(frame, text='Modificar contacto', command=self.modificar_contacto, font=("Helvetica", 12))
+        self.boton_modificar_contacto = ttk.Button(frame, text='Modificar contacto', command=self.modificar_contacto,style="TButton" )
 
         self.label_nombre_modificar.grid(row=3, column=0, sticky="w", padx=10, pady=(0, 5))
         self.entry_nombre_modificar.grid(row=3, column=1, padx=(10))
@@ -45,7 +45,7 @@ class Interfaz:
         self.entry_email_modificar.grid(row=4, column=1, padx=(10))
         self.boton_modificar_contacto.grid(row=5, column=0, columnspan=2, pady=(5, 10))
 
-        self.boton_eliminar_contacto = tk.Button(frame, text='Eliminar contacto', command=self.eliminar_contacto, font=("Helvetica", 12))
+        self.boton_eliminar_contacto = ttk.Button(frame, text='Eliminar contacto', command=self.eliminar_contacto, style="TButton" )
         self.boton_eliminar_contacto.grid(row=6, column=0, columnspan=2, pady=(5, 10))
 
         self.treeview_contactos = ttk.Treeview(self.master, columns=("nombre", "email"), selectmode="extended")
@@ -57,8 +57,15 @@ class Interfaz:
         self.treeview_contactos.column("email", minwidth=0, width=350, stretch=tk.NO)
         self.treeview_contactos.pack(anchor="w",padx=300,pady=200)
 
+        self.boton_cerrar_sesion = ttk.Button(frame, text='Cerrar sesión', command=self.cerrar_sesion, style="TButton")
+        self.boton_cerrar_sesion.grid(row=7, column=0, columnspan=2, pady=(5, 10))
+
         self.cargar_contactos()
 
+
+    def cerrar_sesion(self):
+        self.master.destroy()
+       
     def nuevo_contacto(self):
         nombre = self.entry_nombre.get()
         email = self.entry_email.get()

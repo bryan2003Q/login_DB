@@ -25,8 +25,6 @@ class MasterPanel:
         self.ventana.mainloop()
 
     def iniciar_click(self):
-        
-        # Crear una instancia de la clase App
         self.ventana.destroy()
         FormLogin()
 
