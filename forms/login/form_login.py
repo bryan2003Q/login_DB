@@ -1,10 +1,11 @@
+import tkinter as tk
 from tkinter import messagebox
 from persistence.repository.auth_user_repository import AuthUserRepositroy
 import util.encoding_decoding as end_dec
 from persistence.model import Auth_User
 from forms.login.form_login_designer import FormLoginDesigner
 from forms.registration.form import FormRegister
-
+from forms.master.ventana_contactos import Interfaz
 
 class FormLogin(FormLoginDesigner):
 
@@ -33,8 +34,9 @@ class FormLogin(FormLoginDesigner):
         b_password = end_dec.decrypt(user.password)
         if(password == b_password):
             self.ventana.destroy()
-            messagebox.showinfo(
-                message="Sesión iniciada con exito", title="Mensaje")
+            root = tk.Tk()
+            Interfaz(root)
+            root.mainloop()
             
         else:
             messagebox.showerror(
