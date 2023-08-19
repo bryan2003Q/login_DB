@@ -18,12 +18,14 @@ class Interfaz:
 
        
         # Labels y campos de la primera sección
+        self.label_instrucciones_nuevo = tk.Label(frame, text='Escriba nombre y email para nuevo contacto', font=("Helvetica", 12))
         self.label_nombre = tk.Label(frame, text='Nombre:', bg="#f2f2f2", font=("Helvetica", 12))
         self.entry_nombre = tk.Entry(frame, font=("Helvetica", 12))
         self.label_email = tk.Label(frame, text='Email:', bg="#f2f2f2", font=("Helvetica", 12))
         self.entry_email = tk.Entry(frame, font=("Helvetica", 12))
         self.boton_nuevo_contacto = tk.Button(frame, text='Nuevo contacto', command=self.nuevo_contacto, font=("Helvetica", 12))
 
+      
         self.label_nombre.grid(row=0, column=0, sticky="w", padx=10, pady=(0, 5))
         self.entry_nombre.grid(row=0, column=1, padx=(10))
         self.label_email.grid(row=1, column=0, sticky="w", padx=10, pady=(0, 5))
