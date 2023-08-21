@@ -28,4 +28,6 @@ class MasterPanel:
         self.ventana.destroy()
         FormLogin()
 
+if __name__ == '__main__':
+    master_panel = MasterPanel()
 
